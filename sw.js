@@ -1,14 +1,18 @@
+const cacheList = [
+  './index.html',
+  './main.css',
+  'app.js',
+  'img/wk.jpg'
+]
+
+const SW_CACHE_NAME = 'sw-offline'
+
 self.addEventListener('install', e => {
   e.waitUntil(
-    caches.open('sw-offline')
+    caches.open(SW_CACHE_NAME)
       .then(cache => {
         console.log('cahche open');
-        return cache.addAll([
-          './index.html',
-          './main.css',
-          'app.js',
-          'img/wk.jpg'
-        ])
+        return cache.addAll(cacheList)
       })
   )
 })
